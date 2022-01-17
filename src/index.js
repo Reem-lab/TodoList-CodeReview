@@ -120,7 +120,6 @@ function getDataFromLocal() {
 }
 
 function deleteTaskWith(taskId) {
-  // filter //taskId = e.target.parentelemnt.getAttribute(data-id);
   // eslint-disable-next-line eqeqeq
   arrayOfTasks = arrayOfTasks.filter((task) => task.id != taskId);
   addDataToLocal(arrayOfTasks);
