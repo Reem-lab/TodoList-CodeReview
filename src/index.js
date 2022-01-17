@@ -150,5 +150,3 @@ function deleteTasks() {
     deleteTaskWith(task.id);
   });
 }
-
-
