@@ -42,7 +42,7 @@ tasksDiv.addEventListener('click', (e) => {
   }
 });
 
-function addTaskToArray(taskText) {
+const addTaskToArray = (taskText) => {
   const task = {
     id: Date.now(), // make it quall to time to be different
     title: taskText,
@@ -57,9 +57,9 @@ function addTaskToArray(taskText) {
 
   // add to local storage
   addDataToLocal(arrayOfTasks);
-}
+};
 
-function addElementsToPageFrom(arrayOfTasks) {
+const addElementsToPageFrom = (arrayOfTasks) => {
   // empty task div if has any data
   tasksDiv.innerHTML = ' ';
 
@@ -104,28 +104,28 @@ function addElementsToPageFrom(arrayOfTasks) {
     // add div to container
     tasksDiv.appendChild(div);
   });
-}
+};
 
 // function to add data on local storage
-function addDataToLocal(arrayOfTasks) {
+const addDataToLocal = (arrayOfTasks) => {
   window.localStorage.setItem('tasks', JSON.stringify(arrayOfTasks));
-}
+};
 
-function getDataFromLocal() {
+const getDataFromLocal = () => {
   const data = window.localStorage.getItem('tasks');
   if (data) {
     const tasks = JSON.parse(data); // convert into an object
     addElementsToPageFrom(tasks);
   }
-}
+};
 
-function deleteTaskWith(taskId) {
+const deleteTaskWith = (taskId) => {
   // eslint-disable-next-line eqeqeq
   arrayOfTasks = arrayOfTasks.filter((task) => task.id != taskId);
   addDataToLocal(arrayOfTasks);
-}
+};
 
-function toggleStatusTask(taskId) {
+const toggleStatusTask = (taskId) => {
   for (let i = 0; i < arrayOfTasks.length; i += 1) {
     // eslint-disable-next-line eqeqeq
     if (arrayOfTasks[i].id == taskId) {
@@ -136,16 +136,16 @@ function toggleStatusTask(taskId) {
     }
   }
   addDataToLocal(arrayOfTasks);
-}
+};
 
 deletebtn.addEventListener('click', () => {
   deleteTasks();
   addElementsToPageFrom(arrayOfTasks);
 });
 
-function deleteTasks() {
+const deleteTasks = () => {
   const arrayOfTasks1 = arrayOfTasks.filter((task) => task.completed);
   arrayOfTasks1.forEach((task) => {
     deleteTaskWith(task.id);
   });
-}
+};
